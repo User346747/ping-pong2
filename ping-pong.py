@@ -17,9 +17,46 @@ background = transform.scale(image.load("nightcity.jpg"), (700, 500))
 destroyed = 0 #разбито/уничтожено кораблей
 text_destroyed = 0
 
-#персонажи игры
+#создание спрайтов
+class Sprite(sprite.Sprite):
+    def __init__(self, player_image, player_x, player_y, size_x, size_y, player_speed):
+        super().__init__()
+        self.image = transform.scale(image.load(), (65, 65))
+        self.speed = player_speed
+        self.rect = self.image.get_rect()
+        self.rect.x = player_x
+        self.rect.y = player_y
+    def reset(self):
+        window.blit(self.image, (self.rect.x, self.rect.y))
 
-# увеличить счетчик "пропущено"
+#персонажи игры
+class PlatformPlayer():
+    def __init__(self, player_image, player_x, player_y, size_x, size_y, player_speed):
+        super().__init__()
+        self.image = platform.scale(image.load(), (65, 65))
+        self.speed = player_speed
+        self.rect = self.image.get_rect()
+        self.rect.x = player_x
+        self.rect.y = player_y
+    def reset(self):
+        window.blit(self.image, (self.rect.x, self.rect.y))
+
+#создание спрайт-мяча
+class Ball():
+    def __init__(self, player_image, player_x, player_y, size_x, size_y, player_speed):
+        super().__init__()
+        self.image = ball.scale(image.load(), (65, 65))
+        self.speed = ball_speed
+        self.rect = self.image.get_rect()
+        self.rect.x = player_x
+        self.rect.y = player_y
+    def reset(self):
+        window.blit(self.image, (self.rect.x, self.rect.y))
+
+
+#отображение провала(пропуска мяча) 
+def fail():
+    pass
 
 #создание объектов класса
 
